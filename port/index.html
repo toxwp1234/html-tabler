@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image → HTML table</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page">
+    <header class="page__header">
+      <h1>Image → HTML table</h1>
+      <p class="sub">Wgraj zdjęcie, dostań plik <code>.html</code> z tabelą pikseli — gotowy do wklejenia w e-mail. Wszystko liczone lokalnie w przeglądarce (JS port <code>image_to_html/transform.py</code>).</p>
+    </header>
+
+    <section id="dropzone" class="dropzone" tabindex="0">
+      <input id="fileInput" type="file" accept="image/*" hidden>
+      <div class="dropzone__hint">
+        <strong>Kliknij</strong> albo przeciągnij zdjęcie tutaj
+      </div>
+      <img id="sourcePreview" class="dropzone__preview" alt="" hidden>
+    </section>
+
+    <section class="controls" id="controls" hidden>
+      <div class="field">
+        <label for="rows">Wiersze (n)</label>
+        <input id="rows" type="number" min="1" max="300" value="88">
+      </div>
+      <div class="field">
+        <label for="cols">Kolumny (m)</label>
+        <input id="cols" type="number" min="1" max="300" value="88">
+      </div>
+      <div class="field">
+        <label for="keepAspect">
+          <input id="keepAspect" type="checkbox" checked>
+          zachowaj proporcje zdjęcia
+        </label>
+      </div>
+      <div class="field">
+        <label for="colors">Liczba kolorów (0 = wszystkie)</label>
+        <input id="colors" type="number" min="0" max="256" value="64">
+      </div>
+      <div class="field">
+        <label for="cellSize">Rozmiar komórki (px)</label>
+        <input id="cellSize" type="number" min="1" max="40" value="8">
+      </div>
+      <button id="convertBtn" class="btn btn--primary" type="button">Generuj HTML</button>
+    </section>
+
+    <section id="result" class="result" hidden>
+      <div class="result__preview-wrap">
+        <div id="tablePreview" class="result__preview"></div>
+      </div>
+
+      <div class="result__stats">
+        <div id="statsText" class="stats-text"></div>
+        <div class="result__actions">
+          <button id="downloadReadable" class="btn" type="button">Pobierz index.html (czytelny)</button>
+          <button id="downloadOptimal" class="btn btn--primary" type="button">Pobierz optimal.html (do e-maila)</button>
+        </div>
+      </div>
+    </section>
+
+    <p id="statusLine" class="status" role="status"></p>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

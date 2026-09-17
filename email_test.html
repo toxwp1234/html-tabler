@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<style>
+  /* Wariant B: reguła dla wszystkich td */
+  .tb td { width:20px; height:20px; padding:0; }
+  /* Wariant C: klasy na kolory */
+  .tc td { width:20px; height:20px; padding:0; }
+  .r { background:#e11d48; }
+  .g { background:#16a34a; }
+  .b { background:#2563eb; }
+</style>
+</head>
+<body style="font-family:sans-serif;">
+
+<p><b>Wariant A — wszystko inline</b> (najbezpieczniejszy dla maila)</p>
+<table style="border-collapse:collapse;">
+  <tr>
+    <td style="width:20px;height:20px;padding:0;background:#e11d48;"></td>
+    <td style="width:20px;height:20px;padding:0;background:#16a34a;"></td>
+    <td style="width:20px;height:20px;padding:0;background:#2563eb;"></td>
+  </tr>
+  <tr>
+    <td style="width:20px;height:20px;padding:0;background:#2563eb;"></td>
+    <td style="width:20px;height:20px;padding:0;background:#e11d48;"></td>
+    <td style="width:20px;height:20px;padding:0;background:#16a34a;"></td>
+  </tr>
+</table>
+
+<p><b>Wariant B — rozmiar w &lt;style&gt; (td), kolor inline</b></p>
+<table class="tb" style="border-collapse:collapse;">
+  <tr>
+    <td style="background:#e11d48;"></td>
+    <td style="background:#16a34a;"></td>
+    <td style="background:#2563eb;"></td>
+  </tr>
+  <tr>
+    <td style="background:#2563eb;"></td>
+    <td style="background:#e11d48;"></td>
+    <td style="background:#16a34a;"></td>
+  </tr>
+</table>
+
+<p><b>Wariant C — wszystko przez klasy w &lt;style&gt;</b> (najmniejszy plik)</p>
+<table class="tc" style="border-collapse:collapse;">
+  <tr>
+    <td class="r"></td>
+    <td class="g"></td>
+    <td class="b"></td>
+  </tr>
+  <tr>
+    <td class="b"></td>
+    <td class="r"></td>
+    <td class="g"></td>
+  </tr>
+</table>
+
+<p style="color:#666;">Jeśli w mailu wszystkie trzy wyglądają tak samo (2 rzędy po 3 kolorowe kwadraty:
+czerwony/zielony/niebieski) — klient obsługuje &lt;style&gt; i klasy.
+Jeśli B lub C jest białe/rozjechane — trzymamy się wariantu A (inline).</p>
+
+</body>
+</html>
